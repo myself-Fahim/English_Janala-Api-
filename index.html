@@ -46,11 +46,11 @@
                         <ul
                             tabindex="0"
                             class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                            <button>
+                            <button class="mb-2">
                                 <i class="fa-solid fa-circle-question"></i>
                                 FAQ
                             </button>
-                            <button>
+                            <button class="mb-2">
                                 <i class="fa-solid fa-book-open-reader"></i>
                                 Learn
                             </button>
@@ -129,11 +129,56 @@
                 class="flex flex-wrap justify-center gap-5 mb-10">
             </section>
 
-            <section id="word-sec" class="bg-[#F8F8F8] w-11/12 mx-auto grid grid-cols-1
+            <section id="word-sec"
+                class="bg-[#F8F8F8] w-11/12 mx-auto grid grid-cols-1
             md:grid-cols-2 lg:grid-cols-3
             gap-10  p-8">
 
+                <div class=" mx-auto col-span-full">
+                    <p class="bangla_font text-center mb-[30px]">আপনি এখনো কোন
+                        Lesson Select করেননি</p>
+                    <h1 class="bangla_font text-4xl font-bold">একটি Lesson
+                        Select করুন।</h1>
+                </div>
+            </section>
 
+            
+            <input type="checkbox" id="my_modal_6" class="modal-toggle" />
+            <div id="modal-outside-div" class="modal" role="dialog">
+                
+
+                <!-- <div class="modal-box">
+                    <div>
+                        <h1 class="text-2xl font-bold">Eager (<i
+                                class="fa-solid fa-microphone-lines"></i>:ইগার)</h1>
+                        <div class="my-5">
+                            <h1 class="mb-2 font-semibold">Meaning</h1>
+                            <p class="bangla_font">আগ্রহী</p>
+                        </div>
+
+                         <div class="my-5">
+                            <h1 class="mb-2 font-semibold">Example</h1>
+                            <p>The kids were eager to open their gifts.</p>
+                        </div>
+
+                        <div>
+                            <h1 class="bangla_font mb-2 font-semibold">সমার্থক শব্দ গুলো</h1>
+                            <div>
+                                <button class="btn">asa</button>
+                                <button class="btn">asa</button>
+                                <button class="btn">asa</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-5">
+                        <label for="my_modal_6" class="btn btn-primary rounded-[10px]">Complete Learning</label>
+                    </div>
+                </div> -->
+            </div>
+
+            <section id="spinner" class="flex justify-center items-center py-3 hidden">
+                <span class="loading loading-dots loading-xl"></span>
             </section>
 
         </main>
