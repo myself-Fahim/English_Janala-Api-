@@ -6,21 +6,34 @@ const showSpinner = (status) => {
         document.getElementById('word-sec').classList.add('hidden')
     }
     else {
-        document.getElementById('word-sec').classList.remove('hidden')
         document.getElementById('spinner').classList.add('hidden');
+        document.getElementById('word-sec').classList.remove('hidden')
     }
 }
 
+
 const showSpinnerModelBox = (status) => {
+    modalBox = document.getElementById('modal-outside-div').querySelector('.modal-box');
+    spinner = document.getElementById('spinner2');
+
     if (status) {
-        document.getElementById('spinner2').classList.remove('hidden');
-        document.getElementById('total-model-box').classList.add('hidden')
+        if (modalBox) {
+            spinner.classList.remove('hidden')
+            modalBox.classList.add('hidden')
+        }
+        else {
+            spinner.classList.remove('hidden')
+        }
     }
     else {
-        document.getElementById('total-model-box').classList.remove('hidden')
-        document.getElementById('spinner2').classList.add('hidden');
+        spinner.classList.add('hidden');
+        modalBox.classList.remove('hidden');
     }
+
 }
+
+
+
 
 
 
@@ -113,21 +126,19 @@ const lesson_btn = (btn_no) => {
 
 const word_details_btn = (cardId) => {
 
-  
+    showSpinnerModelBox(true);
     fetch(`https://openapi.programming-hero.com/api/word/${cardId}`)
         .then(res => res.json())
         .then(data => LoadedData(data.data));
     const LoadedData = (obj) => {
-     
         const modalOutsideDiv = document.getElementById('modal-outside-div');
         const modalBox = document.createElement('div');
-        modalBox.innerHTML = ''
         modalBox.classList.add('modal-box');
         modalBox.innerHTML = `
                 <div id = "total-model-box"> 
                     <div>
                         <h1 class="text-2xl font-bold">${obj.word ? obj.word : 'Not Found'} (<i
-                                class="fa-solid fa-microphone-lines"></i>:${obj.pronunciation ? obj.pronunciation: 'Not Found'})</h1>
+                                class="fa-solid fa-microphone-lines"></i>:${obj.pronunciation ? obj.pronunciation : 'Not Found'})</h1>
                         <div class="my-5">
                             <h1 class="mb-2 font-semibold">Meaning</h1>
                             <p class="bangla_font">${obj.meaning ? obj.meaning : 'Not Found'}</p>
@@ -168,11 +179,15 @@ const word_details_btn = (cardId) => {
             })
             synonymsSec.append(synonymsDiv);
         }
+        console.log(modalBox);
         modalOutsideDiv.appendChild(modalBox);
-        showSpinnerModelBox(false)
+        showSpinnerModelBox(false);
 
+
+        // console.log(modalOutsideDiv.innerHTML);
     }
     document.getElementById('my_modal_6').checked = true;
+
 
 }
 
