@@ -121,6 +121,7 @@ const word_details_btn = (cardId) => {
      
         const modalOutsideDiv = document.getElementById('modal-outside-div');
         const modalBox = document.createElement('div');
+        modalBox.innerHTML = ''
         modalBox.classList.add('modal-box');
         modalBox.innerHTML = `
                 <div id = "total-model-box"> 
