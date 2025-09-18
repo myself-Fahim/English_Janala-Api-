@@ -11,6 +11,13 @@ const showSpinner = (status) => {
     }
 }
 
+const pronounceWord = (word) =>{
+
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = "en-EN"; // English
+  window.speechSynthesis.speak(utterance);
+
+}
 
 const showSpinnerModelBox = (status) => {
     modalBox = document.getElementById('modal-outside-div').querySelector('.modal-box');
@@ -101,7 +108,7 @@ const lesson_btn = (btn_no) => {
                         <button id = "word-btn-id" onclick="word_details_btn(${element.id})" class ="btn">
                            <i class="fa-solid fa-circle-info"></i>
                         </button>
-                         <button class="btn">
+                         <button onclick="pronounceWord('${element.word}')" class="btn">
                             <i class="fa-solid fa-volume-high"></i>
                          </button> 
                           
