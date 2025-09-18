@@ -32,12 +32,6 @@ const showSpinnerModelBox = (status) => {
 
 }
 
-
-
-
-
-
-
 fetch('https://openapi.programming-hero.com/api/levels/all')
     .then(res => res.json())
     .then(data => lessonsArray(data.data));
@@ -75,19 +69,19 @@ const lesson_btn = (btn_no) => {
         .then(res => res.json())
         .then(data => loadData(data.data))
 
-
-    const wordSec = document.getElementById('word-sec');
-    wordSec.innerHTML = '';
+}
+   
     loadData = (data) => {
 
+        const wordSec = document.getElementById('word-sec');
+        wordSec.innerHTML = '';
         if (data.length == 0) {
             const showMsg = document.createElement('div');
             showMsg.classList.add("col-span-full");
             showMsg.innerHTML = `
             <div class="mx-auto">
-                 <img class= "mx-auto" src="./assets/alert-error.png" alt="">
-                 <p class="bangla_font text-center my-5">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
-                 <h1 class="bangla_font text-center text-4xl font-bold">নেক্সট Lesson এ যান</h1>
+                 <img class= "mx-auto mb-3" src="./assets/alert-error.png" alt="">
+                 <h1 class="bangla_font text-center text-4xl font-bold">No word to show</h1>
             </div>
             `
             wordSec.appendChild(showMsg);
@@ -122,7 +116,7 @@ const lesson_btn = (btn_no) => {
 
     }
 
-}
+
 
 const word_details_btn = (cardId) => {
 
@@ -188,9 +182,26 @@ const word_details_btn = (cardId) => {
     }
     document.getElementById('my_modal_6').checked = true;
 
-
 }
 
+
+const searchBtn = document.getElementById('search-btn');
+searchBtn.addEventListener('click',()=>{
+   
+     
+     fetch('https://openapi.programming-hero.com/api/words/all')
+     .then(res => res.json())
+     .then(data=> {
+
+         const inpValue= document.getElementById('search-inp').value;
+         searchValue = inpValue.trim().toLowerCase();
+     
+        const wordArray =data.data;
+        const findWord =wordArray.filter(element => element.word.toLowerCase().includes(searchValue));
+        loadData(findWord); 
+     });
+    
+})
 
 
 
